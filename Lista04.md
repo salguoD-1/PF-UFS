@@ -189,3 +189,93 @@ const resultado = `A soma dos ${5} primeiros naturais é: ${somaNaturais(5)}`;
 console.log(resultado);
 ````
 
+````js
+// Q4. Fatorial de um número natural qualquer.
+
+const fatorial = (num) => {
+    // Caso base.
+    if (num == 0 || num == 1) return 1;
+    else {
+        // Chamada recursiva.
+        return num * fatorial(num - 1);
+    }
+};
+
+const resultado = `O fatorial de ${5} é: ${fatorial(5)}`;
+// Exibe 120.
+console.log(resultado);
+````
+
+````js
+// Q5. Potência natural do número 2: 2^n Naturalmente, você não deve 
+// utilizar o operador de expoente da linguagem.
+
+const potenciaBase2 = (e) => {
+    // Caso base.
+    if (e == 0) return 1;
+    else {
+        // Retorna a multiplicação da base(2) vezes o expoente x vezes.
+        return 2 * potenciaBase2(e - 1);
+    }
+};
+
+const resultado = `Base: ${2}, Expoente: ${5}, Resultado: ${potenciaBase2(5)}`;
+// Exibe 32.
+console.log(resultado);
+````
+
+````js
+// Q6. Resto da divisão entre dois números inteiros positivos fornecidos, n e m. 
+// Naturalmente, você não deve utilizar operadores de divisão da linguagem.
+
+const restoDivisão = (n) => (m) => {
+    // Caso base retorna o próprio n.
+    if (n < m) return n;
+    else {
+        // Decrementamos o dividendo pelo divisor.
+        return restoDivisão(n - m)(m);
+    }
+};
+
+const resultado = `O resto da divisão entre ${25} e ${5} é: ${restoDivisão(25)(5)}`;
+// Exibe 0, porque o resto da divisão 25/5 é 0.
+console.log(resultado);
+````
+
+````js
+// Q7. Quociente da divisão entre dois números inteiros positivos fornecidos, n e m. 
+// Naturalmente, você não deve utilizar operadores de divisão da linguagem.
+
+const quociente = (n) => (m) => {
+    // Caso base.
+    if (n < m) return 0;
+    else {
+        // Retorna a soma 1 + a quantidade de chamadas recursivas.
+        return 1 + quociente(n - m)(m);
+    }
+};
+
+const resultado = `O quociente da divisão ${31} por ${7} é: ${quociente(31)(7)}`;
+// Exibe 4.
+console.log(resultado);
+````
+
+
+````js
+// Q8. Máximo Divisor Comum (MDC) entre dois números inteiros positivos, n e m. 
+// Naturalmente, você não deve utilizar operadores de divisão da linguagem.
+
+const mdcNumeros = (n) => (m) => {
+    // Caso base inverte a ordem dos parâmetros.
+    if (n < m) return mdcNumeros(m)(n);
+    else if (m == 0) return n;
+    else {
+        // Decrementamos o valor.
+        return mdcNumeros(n - m)(m);
+    }
+};
+
+const resultado = `O MDC entre ${12} e ${8} é: ${mdcNumeros(12)(8)}`;
+// Retorna 4.
+console.log(resultado);
+````
