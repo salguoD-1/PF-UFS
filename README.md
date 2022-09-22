@@ -1193,7 +1193,7 @@ console.log(resultado);
 - Funções map, filter e reduce.
 
 ```js
-// Métodos como Map, Filter e Reduce retornam uma Array nova sem modificar a array original.
+// Métodos como Map e Filter retornam uma Array nova sem modificar a array original.
 const precos = [
   "Crédito",
   "R$ 200",
