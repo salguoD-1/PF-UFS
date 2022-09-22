@@ -1,3 +1,422 @@
+# Material preparatório para a primeira avaliação de Programação Funcional
+
+- Nota: Esse material não substitui o material do professor, é apenas uma outra fonte de estudo.
+
+# Programação Funcional
+
+- **Programação funcional** é um dos **paradigmas** existentes no campo da programação. Além do paradigma funcional temos o **Imperativo** e o **Orientade a Objetos**.
+
+- Na programação Funcional nós trabalhamos com o conceito de **funções que executam determinada tarefa**, por exemplo
+
+  ```javascript
+  // Declaração de função
+  function somaDeDoisNumeros(numeroUm, numeroDois) {
+    // Exibe a mensagem com o resultado da soma
+    console.log("A soma é: ", numeroUm + numeroDois);
+  }
+
+  // Chamamos a função para executar a sua tarefa
+  // Nesse caso, somar dois números.
+  somaDeDoisNumeros(2, 3); // A soma é:  5
+  ```
+
+- Note que no exemplo acima nós fizemos uso da **palavra-reservada function** e em seguida, atribuimos um **nome a nossa função** que se chama **somaDeDoisNumeros**. Após isso, abrimos os **parênteses** que representam a função e atribuimos dois **parâmetros dentro dos parênteses**, nesse caso as **variãveis numeroUm e numeroDois**. Após isso, **dentro das chaves** nós temos o nosso **bloco de código** que é onde escrevemos o nosso código de fato. O que o nosso bloco de código faz é **imprimir na tela** o resultado da soma dos dois parâmetros(numeroUm e numeroDois). Após isso nós fazemos a **chamada da função** digitando o seu nome e colocando parênteses, após isso a função é executada e imprime o resultado da soma na tela.
+
+- O exemplo acima é apenas uma forma simples de abordar o assunto de funções, veremos mais para a frente a forma correta de trabalhar com **funções puras**.
+
+## Conceito de variável
+
+- Podemos imaginar uma variável como sendo uma gaveta do nosso guarda-roupa, ou seja, essa gaveta serve para armazenar coisas, como camisas, shorts, tênis etc. Uma variável faz basicamente esse papel de armazenar coisas, nesse caso **dados**. Cada **variável armazena um dado na memória do nosso computador**. Vejamos um exemplo
+
+* ```javascript
+  let meuNome = "Douglas";
+  console.log(meuNome); // Irá exibir Douglas na tela.
+  ```
+
+# Tipos de dados primitivos em JavaScript
+
+- JavaScript possui **sete tipos de dados primitivos**, sendo eles:
+
+  - Boolean: São representados pelos valores lógicos **true** e **false**.
+
+  - Null: Basicamente significa nulo, ou seja, nada.
+
+  - Undefined: Significa indefinido, ou seja, algo que não possui 'valor', ou melhor, algo que ainda não foi atribuido.
+
+  - BigInt: Trabalha com valores inteiros muito grandes.
+
+  - String: Strings são uma cadeia de caracteres, ou seja, palavras que são colocadas entre aspas simples ou duplas.
+
+  - Symbol: Não há necessidade de estudar no momento.
+
+  - Object: Não há necessidade de estudar no momento.
+
+## Formas de declarar uma variável usando let e const.
+
+- Em JavaScript é possivel declarar variáveis utilizando as **palavras-reservadas let e const**. De forma simplificada, a diferença entre let e const se dá sobre o conceito de imutabilidade/mutabilidade. Imutabilidade quer dizer que a função é uma constante, ou seja, ela não pode ser reatribuida(mudar o seu valor de origem). Já a mutabilidade é o oposto da imutabilidade, ou seja, é possivel reatribuir valores a variável. Nesse sentido, a palavra-reservada const é imutável, ou seja, é uma constante. Já a palavra-reservada let é mutável, logo, é possivel reatribuir novos valores a variável, vejamos
+
+  ```javascript
+  // A variável meuNome é uma constante, logo, imutável.
+  const meuNome = "Douglas";
+  // A variável minhaIdade é mutável.
+  let minhaIdade = 22;
+  // Exibe Douglas na tela.
+  console.log(meuNome);
+  // Exibe 22 na tela.
+  console.log(minhaIdade);
+  ```
+
+- Note que no exemplo acima meuNome foi declarado utilizando a palavra-reservada **const** pois meu nome não é algo que iremos mudar, ou seja, reatribuir. Já a variável minhaIdade foi declarada usando a palavra-reservada **let** pois minhaIdade muda com o passar dos anos, ou seja, podemos reatribuir(mudar) os valores da variável.
+
+* Vejamos um exemplo em que resultará em um erro.
+
+  ```javascript
+  const meuNome = "Douglas";
+  // Reatribuimos um novo valor a variável meuNome
+  meuNome = "Doug"; // Resultará em um error
+
+  let minhaIdade = 22;
+  minhaIdade = 23; // Podemos reatribuir tranquilamente utilizando let.
+  ```
+
+- Note que no exemplo acima tentamos reatribuir "Doug" a variável meuNome que foi declarada usando const, ou seja, uma constante. Isso resultará em um **error** pois const é imutável, ou seja, não é possivel fazermos uma reatribuição da variável.
+
+* Exemplo envolvendo os **principais tipos de dados** existentes na linguagem JavaScript
+
+  ```javascript
+  // Tipo de dado: String
+  const meuNome = "Douglas";
+
+  // Tipo de dado: Int(Inteiro)
+  let minhaIdade = 22;
+
+  // Tipo de dado: Booleano(Valor lógico)
+  const souLindo = true;
+
+  // Tipo de dado: Float/Double(Decimal)
+  const valorDoPI = 3.1415;
+  ```
+
+- Note que utilizamos **ponto no lugar de virgula para separar as casas decimais**, isso se deve por conta do **padrão dos Estados Unidos**.
+
+# Funções como expressões
+
+- Uma função como expressão é uma forma da gente **armazenar o valor de uma função em uma variável**, vejamos isso
+
+  ```javascript
+  const somaDoisNumeros = (numeroUm, numeroDois) => {
+    return numeroUm + numeroDois;
+  };
+
+  console.log("A soma é: " + somaDoisNumeros(2, 3)); // A soma é: 5
+  ```
+
+- Para entender o exemplo acima vamos analisar passo a passo. Note que declaramos uma **variável chamada somaDoisNumeros** utilizando a palavra-chave **const**, ou seja, uma constante. Logo em seguida fazemos uso do **operador de atribuição =** e abrimos **parênteses da função, onde declaramos dois parâmetros numeroUm e numeroDois** que irão **receber informações ao chamarmos a função**. Após isso, fazemos uso da **notação arrow function(notação de flexa) que é representada pelos símbolos =>** e abrimos chaves. Dentro das **chaves é o nosso bloco de código que é onde iremos escrever as intruções da nossa função, ou seja, o que a nossa função vai fazer**. Após isso temos uma **palavra-reservada chamada return que significa retorne/retornar**, ela basicamente **retorna a soma entre os dois parâmetros(variáveis) numeroUm e numeroDois**. Após isso, fazemos uso da **função console.log() e criamos uma string e concatenamos(juntamos) a string com o valor de retorno da nossa função após a sua chamada**. Note que os valores **2 e 3 dentro dos parênteses são chamados de argumentos**, ou seja, são os **valores que passamos para os parâmetros da nossa função(numeroUm e numeroDois)**.
+
+* Quando utilizamos a palavra-chave **return** nós estamos fazendo uso do conceito de função como retorno, que é basicamente uma função que retorna algo após a sua execução.
+
+# Ordem de precedência dos operadores aritméticos
+
+- Ordem de precedência basicamente significa dizer quais **operações vão ser realizadas primeiro**, a ordem é
+
+  - 1º: **Potenciação ou Radiciação**
+  - 2º: **Multiplicação ou Divisão**
+  - 3º: **Adição ou Subtração**
+
+- Vejamos alguns exemplos
+
+  ```javascript
+  // Potenciação
+
+  // Elevamos a base(numeroQuadrado) ao expoente 2
+  const numero = 2;
+  const numeroQuadrado = numero ** 2;
+  // O resultado será 4, pois 2 * 2 é 4.
+  console.log(numeroQuadrado);
+
+  // Radiciação usando a função Math.sqrt()
+  const radicando = 16;
+  // A função .sqrt da biblioteca Math retorna o valor da raiz de um numero.
+  const raizQuadrada = Math.sqrt(radicando);
+  // Exibe 4, pois a raiz quadrada de 16 é 4.
+  console.log(raizQuadrada);
+
+  // Multiplicação
+  const numeroUm = 2;
+  const numeroDois = 5;
+  // Multiplicamos o valor das duas variáveis
+  const resultado = numeroUm * numeroDois;
+  // Exibe o valor 10, que é a multiplicação 2 * 5
+  console.log(resultado);
+
+  // Divisão
+  const num1 = 10;
+  const num2 = 2;
+  // Dividimos o valor 10 / 2.
+  const result = num1 / num2;
+  // Exibe o valor 5, que é o resultado da divisão 10 / 2.
+  console.log(result);
+
+  // Adição e Subtração
+  const n1 = 10;
+  const n2 = 5;
+  const n3 = 2;
+  // O resultado é 10 + 5 - 2 = 13.
+  const result1 = n1 + n2 - n3;
+  // Exibe o resultado que é 13.
+  console.log(result1);
+  ```
+
+- O exemplo acima aborda os **4 operadores aritméticos e os operadores de potenciação e radiciação**. Veremos agora o operador de módulo. O operador de **módulo retorna o resto da divisão de dois números**.
+
+- O exemplo abaixo trata do operador de módulo que é o resto da divisão entre 10 e 5.
+  ```javascript
+  const numero1 = 10;
+  const numero2 = 5;
+  // O resto da divisão de 10 por 5 é 0.
+  const moduloNumero = numero1 % numero2;
+  // Exibe 0 que é o resto da divisão entre 10 e 5.
+  console.log(moduloNumero);
+  ```
+- Para visualizar isso melhor, vamos ver um exemplo gráfico.
+  ![](./imagens/modulo-image.svg)
+
+- Agora vamos ver a ordem de precedência em ação
+
+  ```javascript
+  const minhaExpressao = 2 ** 3 + 10 - (4 / 2) * 3;
+  // Exibe 12.
+  console.log(minhaExpressao);
+  ```
+
+- Vamos entender essa ordem de precedência visualmente.
+  ![](./imagens/ordem-precedencia.png)
+
+# Estrutura condicional
+
+- A estrutura condicional é uma estrutura que trabalha com **condições para executar determinada tarefa**. Por exemplo, imagine que a condição de uma pessoa entrar em uma balada seria ela ser maior de idade, ou seja, ter **idade maior ou igual a 18**.
+
+## Estrutura condicional if-else
+
+- Vejamos um exemplo gráfico dessa estrutura
+  ![](imagens/estrutura-condicional.png)
+
+* Note que fazemos uso da **palavra-reservada if** em seguida **abrimos parênteses e colocamos nossa condição dentro**. Essa condição será **analisada** pela estrutura if e caso o valor **lógico dela seja true(verdade) temos que o nosso bloco de código dentro das chaves será executado**, ou seja, a função console.log() irá imprimir a string(frase) Você é maior de idade, logo pode entrar na balada!
+
+* Vamos fazer nosso programa descrito acima.
+
+  ```javascript
+  const podeEntrar = (minhaIdade) => {
+    // Fazemos analise do parâmetro minhaIdade
+    if (minhaIdade >= 18) {
+      console.log("Você é maior de idade, logo pode entrar na balada!");
+    } else {
+      console.log("Você é menor de idade, logo não pode entrar na balada!");
+    }
+  };
+
+  // Chamamos a função e passamos uma idade.
+  // 22 é maior ou igual a 18, logo a condição if é true.
+  podeEntrar(22); // Exibe Você é maior de idade, logo pode entrar na balada!
+
+  // Como 17 é menor ou igual a 18, temos que a estrutura if será falsa, logo não
+  // será executada. Ou seja, como if não será executada
+  // Temos que o else(senão) será executado.
+  podeEntrar(17); // Você é menor de idade, logo não pode entrar na balada!
+  ```
+
+* Note que no exemplo acima fizemos uso da **estrutura if-else(se-senão)**, ou seja, essa estrutura funciona **analisando uma condição**, caso a condição seja **true** temos que o nosso if **irá executar o seu bloco de código**, caso a condição seja **falsa** temos que o **else irá executar o seu bloco de código**. Ou seja, caso o **if seja falso temos que ele não será executado**, logo o que sobra é o **else que irá executar sempre que o nosso if for false**.
+
+## Estrutura condicional múltipla
+
+- A **estrutura condicional múltipla testa vários casos até que uma condição seja aceita**, essa estrutura funciona da seguinte forma, vejamos graficamente
+
+![](imagens/condicional-multipla.png)
+
+- Note que temos um novo comando que é o **else if(senão se)**, ou seja, caso o primeiro if não seja true temos que o proximo comando else if será executado e assim por diante. Caso nenhuma condição seja true(verdadeira) temos que a última estrutura else(senão) será executada. Vamos ver essa estrutura em prática fazendo uso de um programinha que calcula o seu IMC?
+
+<br>
+
+- O índice de massa corporal é um indicador que serve para avaliar o peso do individuo, permitindo avaliar se está com excesso de peso ou obesidade.
+
+- Podemos calcular o IMC dividindo o peso (em Kilogramas) pela altura (em metros) ao quadrado. Ou seja, a fórmula do IMC é a seguinte:
+
+- IMC = Peso (kg) / Altura (m)2
+
+- Exemplo: Uma pessoa com 60kg e que meça 1,60 m, possui um IMC de 23,4.
+
+  ```javascript
+  const exibeIMC = (peso, altura) => {
+    // O imc é calculado dividindo o seu peso pelo quadrado da sua altura.
+    const calculoIMC = peso / (altura * altura);
+
+    if (calculoIMC < 18.5) {
+      console.log("O seu índice de massa corporal é: " + calculoIMC);
+      console.log("Baixo peso!");
+    } else if (calculoIMC < 24.9) {
+      console.log("O seu índice de massa corporal é: " + calculoIMC);
+      console.log("Peso normal!");
+    } else if (calculoIMC < 29.9) {
+      console.log("O seu índice de massa corporal é: " + calculoIMC);
+      console.log("Excesso de peso!");
+    } else if (calculoIMC < 34.9) {
+      console.log("O seu índice de massa corporal é: " + calculoIMC);
+      console.log("Obesidade grau I (Moderada)!");
+    } else if (calculoIMC < 39.9) {
+      console.log("O seu índice de massa corporal é: " + calculoIMC);
+      console.log("Obesidade grau II (Severa)!");
+    } else {
+      console.log("O seu índice de massa corporal é: " + calculoIMC);
+      console.log("Obesidade grau III (Mórbida)!");
+    }
+  };
+
+  // Chamamos a função e passamos o peso e nossa altura
+  // Exibe: O seu índice de massa corporal é: 23.25501863821347
+  // Peso normal!
+  exibeIMC(68, 1.71);
+
+  // Testando vários valores
+
+  // O seu índice de massa corporal é: 25.64891761567662
+  // Excesso de peso!
+  exibeIMC(75, 1.71);
+
+  // O seu índice de massa corporal é: 31.120686707020965
+  // Obesidade grau I (Moderada)!
+  exibeIMC(91, 1.71);
+
+  // O seu índice de massa corporal é: 35.90848466194727
+  // Obesidade grau II (Severa)!
+  exibeIMC(105, 1.71);
+
+  // O seu índice de massa corporal é: 44.45812386717281
+  //Obesidade grau III (Mórbida)!
+  exibeIMC(130, 1.71);
+
+  // O seu índice de massa corporal é: 15.389350569405973
+  // Baixo peso!
+  exibeIMC(45, 1.71);
+  ```
+
+- Note que no exemplo acima meu IMC foi aproximadamente 23.25, ou seja, caiu na segunda condição que é calculoIMC < 24.9.
+
+* NOTA: Os exemplos acima estão sendo feitos de forma simples para melhor entendimento, futuramente veremos como retornar strings usando o comando return dentro da função.
+
+# Primeira e Terceira Listas de Exercício
+
+## Primeira Lista
+
+- Resolução da **primeira lista**
+
+  ```javascript
+  /*
+  Q1. Observe os exemplos a seguir e teste-os em um console Javascript de um browser de sua preferência
+  
+  1) Operações aritméticas
+  */
+
+  // Armazena o cálculo da expressão a direita.
+  const operacoesAritmeticas = (-2.11 / ((5.3 + 4.11) * 3)) ** 2;
+  // Exibe o resultado.
+  console.log(operacoesAritmeticas); // Exibe: 0.005586543107958022
+  ```
+
+- Visualmente temos a resolução sendo executada da seguinte forma
+  ![](imagens/Q1.png)
+
+- Preste atenção a ordem de precedência dos operadores e os parênteses mais internos.
+
+* A seguir temos a resolução dos itens 2 e 3 da questão 1
+
+  ```javascript
+  /*
+  Q1. Observe os exemplos a seguir e teste-os em um console Javascript de um browser de sua preferência
+  
+  2) Criação de constantes
+  */
+
+  const a = 5;
+  const b = 3;
+  // Primeiro é realizado a soma(a + b) = 5 + 3 = 8
+  // Depois temos a multiplicação 2 * 8 = 16.
+  const resultado = 2 * (a + b);
+  console.log(resultado); // Exibe 16.
+  ```
+
+- Anteriormente vimos a estrutura if e como ela funciona, vamos aplicar ela no exemplo 3 da questão 1.
+
+  ```javascript
+  /*
+  Q1. Observe os exemplos a seguir e teste-os em um console Javascript de um browser de sua preferência
+  
+  3) Expressões condicionais
+  */
+
+  const a = 5;
+  const b = 3;
+  // Primeiro é realizado a soma(a + b) = 5 + 3 = 8
+  // Depois temos a multiplicação 2 * 8 = 16.
+  const resultado = 2 * (a + b);
+  console.log(resultado); // Exibe 16.
+
+  // Exibe aprovado, pois a(5.0) é maior ou igual a 5.
+  if (a >= 5.0) {
+    console.log("Aprovado");
+  } else {
+    console.log("Reprovado");
+  }
+  ```
+
+- Note que no exemplo acima o valor da variável a é 5, logo a condição dentro da estrutura if é verdadeira(true), ou seja, o seu bloco de código é executado, nesse caso a função console.log().
+
+* No exemplo 4 da questão 1 temos uma manipulação envolvendo strings(textos).
+
+  ```javascript
+  /*
+  Q1. Observe os exemplos a seguir e teste-os em um console Javascript de um browser de sua preferência
+  
+  4) Manipulação de texto
+  */
+
+  let nome = "Fulano";
+  let sobrenome = "Santos";
+
+  // Realizamos uma concatenação(junção/união) de strings.
+  let resultado = nome + " " + sobrenome;
+  // Exibe: Fulano Santos
+  console.log(resultado);
+
+  // Usando os índices(posições) de cada letra na string
+  resultado = nome[0] + sobrenome[0];
+  // Índice 0 é a primeira letra tanto do nome como sobrenome
+  console.log(resultado); // Exibe: FS
+  ```
+
+- Como dito acima, concatenação é uma forma da gente unir/juntar textos(strings). Além disso trabalhamos com os índices(posições) de cada letra da string utilizando colchetes e sua posição.
+
+## Antes de proseguirmos para a terceira lista, vamos estudar o conceito de função como retorno
+
+- Uma função como retorno é basicamente uma função que retorna outra função como resultado, vemos ver um exemplo para melhor entendimento
+
+  ```javascript
+  const expoente = (exp) => (base) => base ** exp;
+
+  const quadrado = expoente(2);
+  const cubo = expoente(3);
+  const raizq = expoente(1 / 2);
+
+  console.log(quadrado(10));
+  console.log(cubo(3));
+  console.log(raizq(81));
+  ```
+
+- Visualmente temos
+  ![](imagens/func-retorno1.png)
+
+- No exemplo acima a variável **quadrado armazena o resultado da expressão** (base) => base \*\* exp, ou seja, armazena uma função como valor.
+
+
 # Definição de Função como Retorno
 
 ```js
