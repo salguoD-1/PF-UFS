@@ -296,4 +296,36 @@ No exemplo acima temos o uso da função de alta ordem reduce, onde ela recebe c
 - Acumulador: Armazena a soma de cada elemento do array
 - valorAtual: É o valor de cada elemento no array.
 
+# Composição de Funções
+
+É possível compor funções de forma a gerar uma única função. Esse conceito será facilmente entendido através do exemplo abaixo.
+
+- Crie um programa para contar o número de caracteres de cada palavra de uma lista, multiplicar esse valor por 3 e depois gerar uma lista crescente dessa lista resultante. Você deve compor as funções de contagem, de triplicação e de ordenação em uma única função.
+
+```js
+// Tem como entrada um array e retorna o tamanho da string.
+const contagem = (lista) => lista.map((texto) => texto.length);
+
+// Tem como entrada um array e retorna os elementos desse array * 3.
+const triplo = (lista) => lista.map((valor) => valor * 3);
+
+// Tem como entrada um array e retorna um array ordenado de forma crescente.
+const ordena = (lista) => lista.sort((a, b) => a - b);
+
+// Acumulador = o array de entrada
+// funcaoAtual = uma das 3 funcoes que vai ser calculada.
+const composicao =
+  (...funcoes) =>
+  (lista) =>
+    funcoes.reduce((acumulador, funcaoAtual) => funcaoAtual(acumulador), lista);
+
+const resultado = composicao(contagem, triplo, ordena);
+
+const nomes = ["Ana Beatriz", "Bia", "Guilherme", "João", "Rafael"];
+
+console.log(resultado(nomes));
+```
+
+No exemplo acima temos que a função composicao vai receber 3 outras funções, além disso ela recebe um array também. Em seguida, para cada função passada iremos usar o método reduce que vai ter como entrada um acumulador(vai ser o array) e uma função, nesse caso cada uma das 3 funções por vez. Por fim, retorna a função passada ex: contagem que recebe o array e retorna uma cópia modificada da lista.
+
 [Voltar](README.md);
