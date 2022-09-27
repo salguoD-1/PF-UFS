@@ -4,5 +4,5 @@
 
 | Tabela de Conteúdos                                                      |
 | ------------------------------------------------------------------------ |
-| [Parte 1 - Fundamentos](README.md)                                       |
+| [Parte 1 - Fundamentos](FUNDAMENTOS.md)                                       |
 | [Parte 2 - Fundamentos do Paradigma Funcional](FUNDAMENTOS-PARADIGMA.md) |
