@@ -165,4 +165,52 @@ O exemplo acima é válido e preserva a imutabilidade da listaUm. Note que usamo
 
 Talvez você esteja se perguntando, e as funções de alta ordem **map, filter e reduce** elas ferem o princípio da imutabilidade? A resposta é não, pois **map e filter geram uma cópia da lista original como resultado, já a função reduce gera um valor como resultado.**
 
+# Closure
+
+Closure tem relação ao escopo onde ela está definida, por exemplo, uma função dentro de outra função tem como escopo(local onde ela está definida e atua sobre) a função mais externa. Vamos ver um exemplo na prática.
+
+![](imagens/closure.png)
+
+No exemplo acima temos que a função displayName() permite acessar uma função externa, pois ela é uma função interna, uma closure. A função displayName() está disponível apenas dentro da função init(), não podendo ser acessada externamente.
+
+# Currying
+
+Currying é uma forma de reescrever nossas funções, permitindo a passagem de parâmetros de forma gradual.
+
+```js
+// Declaração padrão de uma função
+function operacao(a, b, c) {
+  return a * (b - c);
+}
+
+// Declaração usando o conceito de currying
+function operacaoCurrying(a) {
+  return function (b) {
+    return function (c) {
+      return a * (b - c);
+    };
+  };
+}
+
+console.log(operacaoCurrying(4)(3)(1));
+```
+
+Note que no exemplo acima primeiro passamos todos os argumento em um único parênteses, já no segundo caso, cada argumento pertence a parêntese da função passada, nesse caso a, b e c. Ou seja, isso nos permite passar parâmetros de forma gradual conforme necessário. Uma outra forma de reescrever o exemplo acima é usando a notação Arrow Function.
+
+```js
+const operacaoCurrying = (a) => (b) => (c) => a * (b - c);
+```
+
+Note que a cada passagem de parâmetro temos um determinado retorno.
+
+Imagine que queremos fazer o reuso da função operacaoCurrying. Para isso vamos criar uma função chamada dobro.
+
+```js
+const operacaoCurrying = (a) => (b) => (c) => a * (b - c);
+// Passamos os valores de a e b.
+const dobro = operacaoCurrying(-2)(0);
+// Temos a seguinte expressão: -2 * (0 - 10) = 20.
+console.log(dobro(10));
+```
+
 [Voltar](README.md);
