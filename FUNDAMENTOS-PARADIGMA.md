@@ -213,4 +213,55 @@ const dobro = operacaoCurrying(-2)(0);
 console.log(dobro(10));
 ```
 
+# Função de Alta Ordem Map()
+
+A função map tem como **parâmetro uma outra função que realiza seu cálculo e retorna algo. A função map tem como entrada uma lista e retorna uma cópia da lista original, ou seja, a lista original não é modificada. A função map é muit útil para quando quisermos transformar cada valor da lista em um novo valor.**
+
+```js
+// Programa que dobra todos os elementos da lista
+const lista = [1, 2, 3, 4, 5];
+const meDobra = lista.map((valores) => valores * 2);
+// Exibe: [ 2, 4, 6, 8, 10 ]
+console.log(meDobra);
+```
+
+![](imagens/map.png)
+
+O exemplo acima está bem explicadinho, basicamente a função map tem uma outra função dentro de sí, que realiza o cálculo para cada elemento do array e retorna uma cópia modificada do array original.
+
+```js
+// Programa que extrai a inicial de cada nome
+const nomes = ["Ana", "Bia", "Gui", "Lia", "Rafa"];
+
+// Pega somente a primeira letra.
+const extraiPrimeiraLetra = (texto) => texto[0];
+// Passamos a função extraiPrimeiraLetra como parâmetro.
+const iniciais = nomes.map(extraiPrimeiraLetra);
+// Exibe: [ 'A', 'B', 'G', 'L', 'R' ]
+console.log(iniciais);
+```
+
+No exemplo acima temos que para cada elemento do array,a função extraiPrimeiraLetra irá pegar somente o primeiro caractere, por fim retorna uma cópia modificada do array original.
+
+# Função de Alta Ordem Filter()
+
+A função **filter serve para filtrar elemento em um determinado array. O retorno da função filter é uma cópia modificada do array, com os valores filtrados.**
+
+```js
+// Programa que seleciona os nomes que começam com a letra A
+const nomes = ["Felipe", "Ana", "Bia", "Adele", "Gui", "Adam", "Rafa", "Maria"];
+
+const filtroLetra = (letra) => (texto) => texto[0] === letra;
+
+const primeiraLetra = filtroLetra("A");
+// Exibe: [ 'Ana', 'Adele', 'Adam' ]
+console.log(nomes.filter(primeiraLetra));
+```
+
+![](imagens/filter.png)
+
+No exemplo acima temos que a função filtroLetra irá receber a letra que desejamos filtrar e em seguida, recebe uma string(nesse caso o nome), por fim retorna o primeiro caractere de cada string. Em seguida, chamamos a função filtroLetra passando a letra A como argumento, por fim usamos o console.log para imprimir o valor e chamamos o método filter, que tem como parâmetro a função primeiraLetra, que será responsável por filtrar os elementos cujo caractere inicial começa com A.
+
+
+
 [Voltar](README.md);

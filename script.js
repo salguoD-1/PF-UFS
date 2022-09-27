@@ -1,5 +1,8 @@
-const operacaoCurrying = (a) => (b) => (c) => a * (b - c);
-// Passamos os valores de a e b.
-const dobro = operacaoCurrying(-2)(0);
-// Temos a seguinte expressão: -2 * (0 - 10) = 20.
-console.log(dobro(10));
+// Programa que seleciona os nomes que começam com a letra A
+const nomes = ["Felipe", "Ana", "Bia", "Adele", "Gui", "Adam", "Rafa", "Maria"];
+
+const filtroLetra = (letra) => (texto) => texto[0] === letra;
+
+const primeiraLetra = filtroLetra("A");
+// Exibe: [ 'Ana', 'Adele', 'Adam' ]
+console.log(nomes.filter(primeiraLetra));
