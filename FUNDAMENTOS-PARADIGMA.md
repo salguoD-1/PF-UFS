@@ -262,6 +262,38 @@ console.log(nomes.filter(primeiraLetra));
 
 No exemplo acima temos que a função filtroLetra irá receber a letra que desejamos filtrar e em seguida, recebe uma string(nesse caso o nome), por fim retorna o primeiro caractere de cada string. Em seguida, chamamos a função filtroLetra passando a letra A como argumento, por fim usamos o console.log para imprimir o valor e chamamos o método filter, que tem como parâmetro a função primeiraLetra, que será responsável por filtrar os elementos cujo caractere inicial começa com A.
 
+```js
+// Programa para selecionar os nomes com mais de 4 letras.
+const nomes = ["Felipe", "Ana", "Bia", "Adele", "Gui", "Adam", "Rafa", "Maria"];
 
+// Tem como entrada um valor numerico, uma string que é cada elemento do array e retorna uma cópia do array.
+const tamanhoMaiorQue = (tamanhoDesejado) => (texto) =>
+  texto.length > tamanhoDesejado;
+// Exibe: [ 'Felipe', 'Adele', 'Maria' ]
+console.log(nomes.filter(tamanhoMaiorQue(4)));
+```
+
+No exemplo acima temos que a função tamanhoMaiorQue retorna uma cópia modificada do array, cujos valores pertecentes ao array são somente os valores com mais de 4 caracteres.
+
+# Função de Alta Ordem Reduce()
+
+A função de alta ordem reduce tem como entrada um array e retorna um único valor qualquer. Reduce = reduzir, ou seja, reduzimos todos os valores a apenas um único valor.
+
+```js
+// Programa que soma todos os elementos do array
+const meuArray = [10, 5, 3, 12, 14, 22];
+
+// Exibe 66.
+console.log(
+  meuArray.reduce((acumulador, valorAtual) => acumulador + valorAtual)
+);
+```
+
+![](imagens/reduce.png)
+
+No exemplo acima temos o uso da função de alta ordem reduce, onde ela recebe como entrada uma função e retorna a soma total de todos os elementos do array. Os parâmetros acumulador e valorAtual atuam da seguinte forma:
+
+- Acumulador: Armazena a soma de cada elemento do array
+- valorAtual: É o valor de cada elemento no array.
 
 [Voltar](README.md);

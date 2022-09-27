@@ -1,8 +1,6 @@
-// Programa que seleciona os nomes que começam com a letra A
-const nomes = ["Felipe", "Ana", "Bia", "Adele", "Gui", "Adam", "Rafa", "Maria"];
+// Programa que soma todos os elementos do array
+const meuArray = [10, 5, 3, 12, 14, 22];
 
-const filtroLetra = (letra) => (texto) => texto[0] === letra;
-
-const primeiraLetra = filtroLetra("A");
-// Exibe: [ 'Ana', 'Adele', 'Adam' ]
-console.log(nomes.filter(primeiraLetra));
+console.log(
+  meuArray.reduce((acumulador, valorAtual) => acumulador + valorAtual)
+);
