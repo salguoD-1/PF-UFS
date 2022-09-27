@@ -163,4 +163,6 @@ console.log(listaUm);
 
 O exemplo acima é válido e preserva a imutabilidade da listaUm. Note que usamos o operador spread dentro do array para poder armazenar todos os valores ordenados dentro do novo array. Basicamente criamos a definição de um novo array.
 
+Talvez você esteja se perguntando, e as funções de alta ordem **map, filter e reduce** elas ferem o princípio da imutabilidade? A resposta é não, pois **map e filter geram uma cópia da lista original como resultado, já a função reduce gera um valor como resultado.**
+
 [Voltar](README.md);
