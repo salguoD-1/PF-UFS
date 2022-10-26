@@ -173,6 +173,7 @@ No exemplo acima temos uma função recursiva que recebe uma lista de elementos 
 # [EXEMPLO] Duplicar a presença de cada elemento de uma lista.
 
 ```js
+const myList = [3, 8, 20, 21, 34, 44];
 // Função recursiva que duplica a presença de cada elemento de uma lista.
 const duplicaElementos = (lista) => {
   // Caso base
@@ -190,5 +191,7 @@ console.log(`Lista com elementos duplicados: ${duplicaElementos(myList)}`);
 ```
 
 Basicamente o que a função acima faz é receber uma lista e retornar uma nova lista com os elementos da lista original duplicados. Note que temos um caso base e um caso geral. No caso geral temos que a função duplicaElementos recebe uma lista como argumento e verifica se o tamanho da lista é igual a 0, caso seja retorna uma lista vazia, caso contrário retorna a chamada recursiva da função passando como argumento a lista sem o primeiro elemento e assim continua até que a lista esteja vazia. Por fim é retornado a lista com os elementos duplicados. Além disso, note que usamos a nomenclatura head e tail e o operador spread que vai adicionando os elementos duplicados na lista. A grande lógica nesse problema é que os dois head dentro do array vão ser adicionados na lista e assim vai duplicando os elementos.
+
+## [EXEMPLO] Verificar se uma lista possui um determinado elemento.
 
 [Voltar](README.md);
