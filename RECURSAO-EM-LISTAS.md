@@ -194,4 +194,51 @@ Basicamente o que a função acima faz é receber uma lista e retornar uma nova 
 
 ## [EXEMPLO] Verificar se uma lista possui um determinado elemento.
 
+```js
+const myList = [3, 8, 20, 21, 34, 44];
+
+// Função recursiva que verifica se um array possui um determinado elemento.
+const contemElemento = (lista, elemento) => {
+  // Caso base
+  if (lista.length === 0) {
+    return false;
+  }
+  // Caso base
+  if (lista[0] === elemento) {
+    return true;
+  }
+  // Chamada recursiva
+  return contemElemento(lista.slice(1), elemento);
+};
+// Exibe true.
+console.log(contemElemento(myList, 21));
+```
+
+No exemplo acima temos uma função recursiva que recebe uma lista e um número como argumento e verifica se a lista possui o elemento passado como argumento. Note que temos dois casos base e um caso geral. No caso geral temos que a função contemElemento recebe uma lista como argumento e verifica se o primeiro elemento da lista é igual ao elemento passado como argumento, caso seja retorna true, caso contrário retorna a chamada recursiva da função passando como argumento a lista sem o primeiro elemento e o elemento passado como argumento. Note que usamos novamente o método slice que vai criando sub-listas até que o tamanho da lista seja igual a 0. Note também que caso a lista esteja vazia, ou seja, sem nenhum elemento, a função retorna false.
+
+## [EXEMPLO] Testar se uma string consiste num palíndromo.
+
+```js
+// Função recursiva que testa se uma string consiste num palíndromo.
+const formaPalindromo = (str) => {
+  // Caso base: se a string tiver menos de 2 caracteres, ela é um palíndromo.
+  if (str.length <= 1) {
+    return true;
+  }
+  // Caso geral: se o primeiro e o último caracteres forem iguais, chama a função novamente, passando a string sem o primeiro e o último caracteres.
+  if (str[0] === str[str.length - 1]) {
+    return formaPalindromo(str.slice(1, str.length - 1));
+  }
+  // Caso base: se o primeiro e o último caracteres não forem iguais, a string não é um palíndromo.
+  return false;
+};
+
+// Nota: usamos o método toLowerCase para garantir que a string seja testada independentemente de maiúsculas e minúsculas.
+const myString = 'Roma é amor'.toLowerCase();
+
+console.log(formaPalindromo(myString));
+```
+
+No exemplo acima temos uma função recursiva que recebe uma string como argumento e verifica se a string é um palíndromo. Note que temos dois casos base e um caso geral. No caso geral temos que a função formaPalindromo recebe uma string como argumento e verifica se o primeiro e o último caracteres são iguais, caso sejam retorna a chamada recursiva da função passando como argumento a string sem o primeiro e o último caracteres. Note que usamos novamente o método slice que vai criando sub-strings até que o tamanho da string seja igual a 0. Note também que caso a string esteja vazia, ou seja, sem nenhum caracter, a função retorna true. Além disso, note que usamos o método toLowerCase para garantir que a string seja testada independentemente de maiúsculas e minúsculas.
+
 [Voltar](README.md);
