@@ -41,4 +41,70 @@ const listOfNumbers = (list) => {
 
 Dessa forma fica mais "visivel" o caso base da função.
 
+## [EXEMPLO] Escreva um programa para calcular a soma dos valores de uma lista. Ex: \{3, 8, 20, 21, 34, 44\}{3,8,20,21,34,44}.
+
+```js
+const myList = [3, 8, 20, 21, 34, 44];
+
+// Função que retorna a soma de todos os elementos de um array de forma recursiva
+const soma = (lista) => {
+  // Caso base
+  if (lista.length == 0) {
+    return 0;
+  } else {
+    // Head é basicamente a cabeça(ou seja, o primeiro elemento da lista)
+    const head = lista.slice(0, 1)[0];
+    // Tail é basicamente a cauda(ou seja, o resto da lista)
+    const tail = lista.slice(1);
+    // Retornando a soma do head com a soma do tail
+    return head + soma(tail);
+  }
+};
+// Chamando a função e passamos a lista como argumento
+console.log(soma(myList));
+```
+
+No exemplo acima temos a solução do problema utilizando a recursão. Note que essa nomenclatura é mais adotada em linguagems como Haskell, uma forma de simplificar é utilizando a primeira função desse material com o operador ternário. Basicamente o que a função faz é: Primeiro analisa o tamanho da lista, ou seja, a quantidade de elementos presentes na lista, se o tamanho for igual a 0, retorna 0, caso contrário, retorna o primeiro elemento da lista + a chamada da função passando como parâmetro a lista(tail) sem o primeiro elemento.
+
+##
+
+```js
+const myList = [3, 8, 20, 21, 34, 44];
+// Função que retorna a soma de todos os elementos de um array de forma recursiva utilizando o operador spread
+const somaElementos = (lista) => {
+  // Caso base
+  if (lista.length == 0) {
+    return 0;
+  } else {
+    // Head é basicamente a cabeça(ou seja, o primeiro elemento da lista)
+    const [head, ...tail] = lista;
+    // Retornando a soma do head com a soma do tail
+    return head + somaElementos(tail);
+  }
+};
+// Chamando a função e passamos a lista como argumento
+console.log(somaElementos(myList));
+```
+
+No exemplo acima temos a resolução do mesmo problema utilizando o operador **spread**. Note que temos o seguinte, **const [head, ...tail] = lista**. Head basicamente é o primeiro elemento da lista e em seguida, temos uma sub-lista que contém os elementos restantes(8, 20, 21, 34, 44). A cada chamada recursiva temos que o head será o primeiro elemento da sub-lista seguinte, ou seja, começa em 3 e vai indo até o último elemento da lista. Já o tail vai criando sub-listas até que a lista esteja vazia.
+
+## Uma terceira forma de resolver o problema acima
+
+```js
+// Função que retorna true ou false caso uma lista esteja vazia.
+const listaVazia = (lista) => {
+  return lista.length == 0;
+};
+
+// Função recurisva que retorna a soma de uma lista
+const sumNumerosRecursivo = (lista) => {
+  // Chama a função listaVazia e retorna 0 caso a lista esteja vazia
+  return listaVazia(lista) ? 0 : lista[0] + sumNumerosRecursivo(lista.slice(1));
+};
+
+console.log(sumNumerosRecursivo(myList));
+```
+
+No exemplo acima temos uma função que retorna true caso a lista esteja vazia e false caso a lista não esteja vazia. Em seguida, temos uma função recursiva que recebe uma lista e chama a função listaVazia passando como argumento a lista, caso a lista esteja vazia retorna 0, caso contrário retorna a soma do primeiro elemento da lista + a chamada recursiva da função que passa como argumento a lista sem o primeiro elemento. Note que usamos o método slice para ir criando sub-listas até que o tamanho da lista seja igual a 0.
+
 [Voltar](README.md);
