@@ -66,7 +66,7 @@ console.log(soma(myList));
 
 No exemplo acima temos a solução do problema utilizando a recursão. Note que essa nomenclatura é mais adotada em linguagems como Haskell, uma forma de simplificar é utilizando a primeira função desse material com o operador ternário. Basicamente o que a função faz é: Primeiro analisa o tamanho da lista, ou seja, a quantidade de elementos presentes na lista, se o tamanho for igual a 0, retorna 0, caso contrário, retorna o primeiro elemento da lista + a chamada da função passando como parâmetro a lista(tail) sem o primeiro elemento.
 
-##
+## Uma segunda forma de resolver o exemplo acima
 
 ```js
 const myList = [3, 8, 20, 21, 34, 44];
@@ -91,6 +91,7 @@ No exemplo acima temos a resolução do mesmo problema utilizando o operador **s
 ## Uma terceira forma de resolver o problema acima
 
 ```js
+const myList = [3, 8, 20, 21, 34, 44];
 // Função que retorna true ou false caso uma lista esteja vazia.
 const listaVazia = (lista) => {
   return lista.length == 0;
@@ -106,5 +107,68 @@ console.log(sumNumerosRecursivo(myList));
 ```
 
 No exemplo acima temos uma função que retorna true caso a lista esteja vazia e false caso a lista não esteja vazia. Em seguida, temos uma função recursiva que recebe uma lista e chama a função listaVazia passando como argumento a lista, caso a lista esteja vazia retorna 0, caso contrário retorna a soma do primeiro elemento da lista + a chamada recursiva da função que passa como argumento a lista sem o primeiro elemento. Note que usamos o método slice para ir criando sub-listas até que o tamanho da lista seja igual a 0.
+
+## [EXEMPLO] Encontrar o último elemento de uma lista qualquer passada.
+
+```js
+const myList = [3, 8, 20, 21, 34, 44];
+const retornaUltimoElemento = (lista) => {
+  // Caso base
+  if (lista.length == 0) {
+    return `Lista vazia`;
+  } else {
+    // Temos um caso base e um caso geral.
+    return lista.length == 1 ? lista[0] : retornaUltimoElemento(lista.slice(1));
+  }
+};
+
+console.log(retornaUltimoElemento(myList));
+```
+
+No exemplo acima temos que a função retornaUltimoElemento recebe uma lista como argumento e verifica se o tamanho da lista é igual a 1, caso seja retorna o primeiro elemento da lista, caso contrário retorna a chamada recursiva da função passando como argumento a lista sem o primeiro elemento. Note que usamos novamente o método slice que vai criando sub-listas até que o tamanho da lista seja igual a 1. Note também que caso a lista esteja vazia, ou seja, sem nenhum elemento, a função retorna a mensagem **Lista vazia**.
+
+## [EXEMPLO] Encontrar o maior elemento de uma lista.
+
+```js
+const myList = [3, 8, 20, 21, 34, 44];
+// Função que retorna o maior elemento da lista de forma recursiva
+const retornaMaiorElemento = (lista) => {
+  // Caso base
+  if (lista.length == 0) {
+    return `Lista vazia`;
+  } else {
+    // Caso base e caso geral
+    return lista.length == 1
+      ? lista[0]
+      : Math.max(lista[0], retornaMaiorElemento(lista.slice(1)));
+  }
+};
+
+console.log(retornaMaiorElemento(myList));
+```
+
+No exemplo acima temos uma função recursiva que retorna o maior elemento de uma lista. Note que usamos o método Math.max que retorna o maior valor entre dois números. Note também que temos um caso base e um caso geral. No caso geral temos que a função retornaMaiorElemento recebe uma lista como argumento e verifica se o tamanho da lista é igual a 1, caso seja retorna o primeiro elemento da lista, caso contrário retorna o maior valor entre o primeiro elemento da lista e a chamada recursiva da função passando como argumento a lista sem o primeiro elemento. Note que usamos novamente o método slice que vai criando sub-listas até que o tamanho da lista seja igual a 1. Note também que caso a lista esteja vazia, ou seja, sem nenhum elemento, a função retorna a mensagem **Lista vazia**.
+
+## [EXEMPLO] Inverter a ordem dos elementos de uma lista.
+
+```js
+const myList = [3, 8, 20, 21, 34, 44];
+// Função recursiva que inverte a ordem dos elementos de uma lista.
+const inverteLista = (lista) => {
+  // Caso base
+  if (lista.length == 0) {
+    return `Lista vazia`;
+  } else {
+    // Caso base e caso geral
+    return lista.length == 1
+      ? lista[0]
+      : inverteLista(lista.slice(1)) + `, ` + lista[0];
+  }
+};
+
+console.log(inverteLista(myList));
+```
+
+No exemplo acima temos uma função que recebe uma lista e analisa se a lista está vazia, caso esteja retorna a mensagem **Lista vazia**, caso contrário verifica se o tamanho da lista é igual a 1, caso seja retorna o primeiro elemento da lista, caso contrário retorna a chamada recursiva da função passando como argumento a lista sem o primeiro elemento + `, ` + o primeiro elemento da lista. Note que usamos novamente o método slice que vai criando sub-listas até que o tamanho da lista seja igual a 1.
 
 [Voltar](README.md);

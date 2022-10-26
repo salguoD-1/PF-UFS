@@ -10,7 +10,7 @@
 // };
 // console.log(listOfNumbers(listNums));
 
-const myList = [3, 8, 20, 21, 34, 44];
+const myList = [3, 8, 20, 105 ,21, 34, 44];
 
 // // Função que retorna a soma de todos os elementos de um array de forma recursiva
 // const soma = (lista) => {
@@ -44,15 +44,50 @@ const myList = [3, 8, 20, 21, 34, 44];
 // // Chamando a função e passamos a lista como argumento
 // console.log(somaElementos(myList));
 
-// Função que retorna true ou false caso uma lista esteja vazia.
-const listaVazia = (lista) => {
-  return lista.length == 0;
+// // Função que retorna true ou false caso uma lista esteja vazia.
+// const listaVazia = (lista) => {
+//   return lista.length == 0;
+// }
+
+// // Função recurisva que retorna a soma de uma lista
+// const sumNumerosRecursivo = (lista) => {
+//   // Chama a função listaVazia e retorna 0 caso a lista esteja vazia
+//   return listaVazia(lista) ? 0 : lista[0] + sumNumerosRecursivo(lista.slice(1));
+// }
+
+// console.log(sumNumerosRecursivo(myList));
+
+// // Encontrar o último elemento de uma lista qualquer passada.
+// const retornaUltimoElemento = (lista) => {
+//   if (lista.length == 0) {
+//     return `Lista vazia`;
+//   } else {
+//     return lista.length == 1 ? lista[0] : retornaUltimoElemento(lista.slice(1));
+//   }
+// };
+
+// console.log(retornaUltimoElemento(myList));
+
+// // Função que retorna o maior elemento da lista de forma recursiva
+// const retornaMaiorElemento = (lista) => {
+//   if (lista.length == 0) {
+//     return `Lista vazia`;
+//   } else {
+//     return lista.length == 1 ? lista[0] : Math.max(lista[0], retornaMaiorElemento(lista.slice(1)));
+//   }
+// }
+
+// console.log(retornaMaiorElemento(myList));
+
+// Função recursiva que inverte a ordem dos elementos de uma lista.
+const inverteLista = (lista) => {
+  // Caso base
+  if (lista.length == 0) {
+    return `Lista vazia`;
+  } else {
+    // Caso base e caso geral
+    return lista.length == 1 ? lista[0] : inverteLista(lista.slice(1)) + `, ` + lista[0];
+  }
 }
 
-// Função recurisva que retorna a soma de uma lista
-const sumNumerosRecursivo = (lista) => {
-  // Chama a função listaVazia e retorna 0 caso a lista esteja vazia
-  return listaVazia(lista) ? 0 : lista[0] + sumNumerosRecursivo(lista.slice(1));
-}
-
-console.log(sumNumerosRecursivo(myList));
+console.log(inverteLista(myList));
