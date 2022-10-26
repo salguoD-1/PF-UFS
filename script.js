@@ -10,7 +10,7 @@
 // };
 // console.log(listOfNumbers(listNums));
 
-const myList = [3, 8, 20, 105 ,21, 34, 44];
+const myList = [3, 8, 20, 105, 21, 34, 44];
 
 // // Função que retorna a soma de todos os elementos de um array de forma recursiva
 // const soma = (lista) => {
@@ -73,21 +73,23 @@ const myList = [3, 8, 20, 105 ,21, 34, 44];
 //   if (lista.length == 0) {
 //     return `Lista vazia`;
 //   } else {
-//     return lista.length == 1 ? lista[0] : Math.max(lista[0], retornaMaiorElemento(lista.slice(1)));
+//     return lista.length == 1
+//       ? lista[0]
+//       : Math.max(lista[0], retornaMaiorElemento(lista.slice(1)));
 //   }
-// }
+// };
 
 // console.log(retornaMaiorElemento(myList));
 
-// Função recursiva que inverte a ordem dos elementos de uma lista.
 const inverteLista = (lista) => {
   // Caso base
   if (lista.length == 0) {
-    return `Lista vazia`;
+    return [];
+    // Caso geral
   } else {
-    // Caso base e caso geral
-    return lista.length == 1 ? lista[0] : inverteLista(lista.slice(1)) + `, ` + lista[0];
+    const [head, ...tail] = lista;
+    return [...inverteLista(tail), head];
   }
-}
-
-console.log(inverteLista(myList));
+};
+console.log(`Lista original: ${myList}`);
+console.log(`Lista invertida: ${inverteLista(myList)}`);

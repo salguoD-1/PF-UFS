@@ -157,18 +157,17 @@ const myList = [3, 8, 20, 21, 34, 44];
 const inverteLista = (lista) => {
   // Caso base
   if (lista.length == 0) {
-    return `Lista vazia`;
+    return [];
+    // Caso geral
   } else {
-    // Caso base e caso geral
-    return lista.length == 1
-      ? lista[0]
-      : inverteLista(lista.slice(1)) + `, ` + lista[0];
+    const [head, ...tail] = lista;
+    return [...inverteLista(tail), head];
   }
 };
-
-console.log(inverteLista(myList));
+console.log(`Lista original: ${myList}`);
+console.log(`Lista invertida: ${inverteLista(myList)}`);
 ```
 
-No exemplo acima temos uma função que recebe uma lista e analisa se a lista está vazia, caso esteja retorna a mensagem **Lista vazia**, caso contrário verifica se o tamanho da lista é igual a 1, caso seja retorna o primeiro elemento da lista, caso contrário retorna a chamada recursiva da função passando como argumento a lista sem o primeiro elemento + `, ` + o primeiro elemento da lista. Note que usamos novamente o método slice que vai criando sub-listas até que o tamanho da lista seja igual a 1.
+No exemplo acima temos uma função recursiva que recebe uma lista de elementos e retorna uma nova lista com os elementos da lista original na ordem inversa. Note que usamos o operador spread para concatenar as listas. Note também que temos um caso base e um caso geral. No caso geral temos que a função inverteLista recebe uma lista como argumento e verifica se o tamanho da lista é igual a 0, caso seja retorna uma lista vazia, caso contrário retorna a chamada recursiva da função passando como argumento a lista sem o primeiro elemento e assim continua até que a lista esteja vazia. Por fim é retornado a lista na ordem inversa. Além disso, note que usamos a nomenclatura head e tail e o operador spread.
 
 [Voltar](README.md);
