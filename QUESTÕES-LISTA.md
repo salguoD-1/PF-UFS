@@ -113,4 +113,33 @@ console.log(totalVogais('aeioubcdfgh'));
 
 Na função recursiva acima temos que a função recebe como argumento uma string e em seguida, no caso base é analisando se a string está vazia, caso esteja retorna 0. Caso contrário é analisado se o primeiro caractere da string é uma vogal, se for, retorna 1 + a função passando a string sem o primeiro caractere, caso contrário, retorna a função passando a string sem o primeiro caractere. O método slice vai criando sub-strings a partir do primeiro caractere da string, até que a string fique vazia. Note que usamos regex para analisar se o caractere na posição 0 é uma vogal. O método test() é um método que faz parte do regex que retorna true ou false. Ou seja, no codigo **/[aeiou]/.test(str[0])** temos que o regex **/[aeiou]/** vai analisar se o caractere na posição 0 da string é uma vogal, se for, retorna true, caso contrário, retorna false.
 
+## Questão 05
+
+```js
+/*
+ * Criar uma função que transforma frases terminadas com múltiplos pontos
+ * de interrogação ? ou pontos de exclamação ! numa frase que termina apenas
+ * com um, sem alterar a pontuação no meio das frases.
+ * Ex: semgritaria("O que é isso?????") ---> "O que é isso?"
+ */
+
+const removeDuplaPontuacao = (str) => {
+  // Se a string não tiver mais de 1 caractere, retorna a string
+  if (str.length === 0) {
+    return str;
+  }
+  // Se o primeiro caractere for igual ao segundo, retorna a string sem o primeiro caractere
+  if (str[0] === str[1] && (str[0] === '!' || str[0] === '?')) {
+    return removeDuplaPontuacao(str.slice(1));
+  }
+  // Se o primeiro caractere for diferente do segundo, retorna o primeiro caractere concatenado com a string sem o primeiro caractere
+  return str[0] + removeDuplaPontuacao(str.slice(1));
+};
+
+// Exibe Olá!? Tudo bem? Meu nome é Douglas!
+console.log(removeDuplaPontuacao('Olá!!!? Tudo bem??? Meu nome é Douglas!!!!'));
+```
+
+Na função recursiva acima temos que a função recebe como argumento uma string e em seguida, no caso base é analisando se a string está vazia, caso esteja retorna a string. Caso contrário é analisado se o primeiro caractere da string é igual ao segundo caractere da string e se o primeiro caractere é um ponto de exclamação ou ponto de interrogação, se for, retorna a função passando a string sem o primeiro caractere, caso contrário, retorna o primeiro caractere concatenado com a função passando a string sem o primeiro caractere. O método slice vai criando sub-strings a partir do primeiro caractere da string, até que a string fique vazia.
+
 [Voltar](README.md);
